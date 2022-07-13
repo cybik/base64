@@ -52,6 +52,14 @@ class Base64 {
     return (enc_len == out->size());
   }
 
+  static std::string Encode(const std::string& input) {
+    std::string enc;
+    if(!Encode(input, &enc)) {
+        return "";
+    }
+    return enc;
+  }
+
   static bool Encode(const char *input, size_t input_length, char *out, size_t out_length) {
     int i = 0, j = 0;
     char *out_begin = out;
@@ -143,6 +151,14 @@ class Base64 {
     }
 
     return (dec_len == out->size());
+  }
+
+  static std::string Decode(const std::string& input) {
+    std::string enc;
+    if(!Decode(input, &enc)) {
+      return "";
+    }
+    return enc;
   }
 
   static bool Decode(const char *input, size_t input_length, char *out, size_t out_length) {
